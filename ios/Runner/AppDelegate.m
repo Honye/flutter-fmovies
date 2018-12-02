@@ -17,6 +17,9 @@
     self.window.rootViewController = [[FlutterViewController alloc] init];
     [self.window makeKeyAndVisible];
     
+    // Honye do it. Sleep 1.5s
+    [NSThread sleepForTimeInterval:1.5];
+    
   // Override point for customization after application launch.
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
