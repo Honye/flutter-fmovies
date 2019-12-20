@@ -14,6 +14,8 @@ class MovieDetails {
   final String mainlandPubdate;
   final String summary;
   final String subtype;
+  final List<String> durations;
+  final List<String> pubdates;
 
   factory MovieDetails(Map jsonMap) =>
     MovieDetails._fromJson(jsonMap);
@@ -32,5 +34,7 @@ class MovieDetails {
       countries = jsonMap['countries'].map<String>((item) => item.toString()).toList(),
       mainlandPubdate = jsonMap['mainland_pubdate'],
       summary = jsonMap['summary'],
-      subtype = jsonMap['subtype'];
+      subtype = jsonMap['subtype'],
+      durations = jsonMap['durations'].map<String>((item) => item.toString()).toList(),
+      pubdates = jsonMap['pubdates'].map<String>((item) => item.toString()).toList();
 }
