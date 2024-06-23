@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../movies.dart';
 import './movies/movie_list.dart' as CMovieList;
+import './github/repo_list.dart';
 import '../hello.dart';
 import './search/search_page.dart';
 
@@ -35,8 +36,9 @@ class HomePageState extends State<HomePage> {
       ),
       body: PageView(
         children: <Widget>[
-          CMovieList.MovieList(),
-          MovieList(),
+          RepoList(),
+          // CMovieList.MovieList(),
+          // MovieList(),
           HelloWords(),
         ],
         pageSnapping: true,
@@ -50,11 +52,9 @@ class HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.group_work), title: Text('Movies')),
+              icon: Icon(Icons.book_outlined), label: 'Repos'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.fingerprint), title: Text('Store')),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.school), title: Text('School')),
+              icon: Icon(Icons.fingerprint), label: 'Store'),
         ],
         currentIndex: _selectedIndex,
         onTap: (int page) {

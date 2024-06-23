@@ -1,4 +1,7 @@
+import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import '../../util/api_client.dart';
 import '../../model/media_list.dart';
 import './movie_item.dart';
@@ -47,6 +50,22 @@ class MovieListState extends State<MovieList> {
     });
   }
 
+  /// 获取 GitHub 用户信息
+  void _getUserInfo() async {
+    print('开始获取 GitHub');
+    final response = await http.get(
+      Uri.https('api.github.com', '/user/repos'),
+      headers: {
+        HttpHeaders.authorizationHeader: 'token ec0f4ecd3723aa2c9145903b984856f385125ef5',
+        HttpHeaders.acceptHeader: 'application/vnd.github.v3+json'
+      }
+    );
+    if (response.statusCode == 200) {
+      final responseJson = jsonDecode(response.body);
+      print(responseJson);
+    }
+  }
+
   Widget _buildMovieList() {
     switch (_loadingState) {
       case LoadingState.DONE:
@@ -81,5 +100,6 @@ class MovieListState extends State<MovieList> {
   void initState() {
     super.initState();
     _getMovies();
+    _getUserInfo();
   }
 }
